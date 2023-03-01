@@ -4,7 +4,6 @@ import org.example.marketplace.generic.Command;
 
 public class CreateUserCommand extends Command {
     private String userId;
-
     private String password;
     private String nickname;
 

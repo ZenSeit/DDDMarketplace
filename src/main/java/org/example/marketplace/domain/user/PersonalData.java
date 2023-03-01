@@ -35,7 +35,7 @@ public class PersonalData extends Entity<PersonalDataId> {
         return birthday;
     }
 
-    public void updateName(Name newName){
-        this.name=newName;
+    public void updateEmailData(String newEMail){
+        email=email.updateEmail(newEMail);
     }
 }

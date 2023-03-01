@@ -1,7 +1,7 @@
 package org.example.marketplace.domain.user;
 
 import org.example.marketplace.domain.user.events.PersonalDataAdded;
-import org.example.marketplace.domain.user.events.PersonalDataNameUpdated;
+import org.example.marketplace.domain.user.events.PersonalDataEmailUpdated;
 import org.example.marketplace.domain.user.events.UserCreated;
 import org.example.marketplace.domain.values.*;
 import org.example.marketplace.generic.AggregateRoot;
@@ -20,10 +20,8 @@ public class User extends AggregateRoot<UserId> {
     public User(UserId id, Password password, Nickname nickname) {
         super(id);
         subscribe(new UserChange(this));
-        appendChange(new UserCreated(personalData, password.value(), nickname.value()));
+        appendChange(new UserCreated(password.value(), nickname.value()));
     }
-
-
 
     private User(UserId id){
         super(id);
@@ -41,7 +39,7 @@ public class User extends AggregateRoot<UserId> {
         appendChange(new PersonalDataAdded(id.value(),name,lastname,email,birthDay));
     }
 
-    public void updateName(Name name){
-        appendChange(new PersonalDataNameUpdated(personalData,name)).apply();
+    public void updateEmail(Email email){
+        appendChange(new PersonalDataEmailUpdated(email)).apply();
     }
 }

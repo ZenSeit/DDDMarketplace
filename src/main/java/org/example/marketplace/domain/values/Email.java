@@ -4,7 +4,7 @@ import org.example.marketplace.generic.ValueObject;
 
 public class Email implements ValueObject<String> {
 
-    private String email;
+    private final String email;
 
     public Email(String email) {
         this.email = email;
@@ -13,5 +13,9 @@ public class Email implements ValueObject<String> {
     @Override
     public String value() {
         return email;
+    }
+
+    public Email updateEmail(String newEmail){
+        return new Email(newEmail);
     }
 }

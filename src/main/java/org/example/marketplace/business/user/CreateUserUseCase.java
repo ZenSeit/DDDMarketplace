@@ -24,6 +24,6 @@ public class CreateUserUseCase implements UseCaseForCommand<CreateUserCommand> {
     @Override
     public List<DomainEvent> apply(CreateUserCommand command) {
         User user=new User(UserId.of(command.getUserId()),new Password(command.getPassword()),new Nickname(command.getNickname()));
-        return user.getUncommittedChanges().stream().map(event->eventsRepository.saveEvent(event)).toList();
+        return user.getUncommittedChanges().stream().map(eventsRepository::saveEvent).toList();
     }
 }

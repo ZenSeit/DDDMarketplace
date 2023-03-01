@@ -5,19 +5,16 @@ import org.example.marketplace.generic.DomainEvent;
 
 public class UserCreated extends DomainEvent {
 
-    private PersonalData personalData; //id
+    private PersonalData personalData;
     private String password;
     private String nickname;
 
-    public UserCreated(PersonalData personalData, String password, String nickname) {
+    public UserCreated(String password, String nickname) {
         super("org.example.marketplace.usercreated");
-        this.personalData = personalData;
         this.password = password;
         this.nickname = nickname;
     }
-    public UserCreated(String personalDataId, String personalDataId1) {
-        super("org.example.marketplace.usercreated");
-    }
+
 
     public PersonalData getPersonalData() {
         return personalData;
