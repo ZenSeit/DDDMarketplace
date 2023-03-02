@@ -4,19 +4,26 @@ import org.example.marketplace.generic.Command;
 
 public class AddReviewCommand extends Command {
 
+    private String productId;
     private String reviewId;
     private String title;
     private String description;
     private String userId;
 
-    public AddReviewCommand(String reviewId, String title, String description, String userId) {
+    public AddReviewCommand(String productId, String reviewId, String title, String description, String userId) {
+        this.productId = productId;
         this.reviewId = reviewId;
         this.title = title;
         this.description = description;
         this.userId = userId;
     }
 
-    public AddReviewCommand() {
+    public String getProductId() {
+        return productId;
+    }
+
+    public void setProductId(String productId) {
+        this.productId = productId;
     }
 
     public String getReviewId() {

@@ -7,13 +7,14 @@ public class CreateProductCommand extends Command {
     private String productId;
     private String name;
     private String description;
-    private String quantity;
-    private String price;
+    private int quantity;
+    private double price;
     private String ownerId;
 
     //private String reviewId;
 
-    public CreateProductCommand(String productId, String name, String description, String quantity, String price, String ownerId) {
+
+    public CreateProductCommand(String productId, String name, String description, int quantity, double price, String ownerId) {
         this.productId = productId;
         this.name = name;
         this.description = description;
@@ -46,19 +47,19 @@ public class CreateProductCommand extends Command {
         this.description = description;
     }
 
-    public String getQuantity() {
+    public int getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(String quantity) {
+    public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
 
-    public String getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(String price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 

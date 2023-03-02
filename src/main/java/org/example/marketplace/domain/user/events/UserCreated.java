@@ -5,7 +5,6 @@ import org.example.marketplace.generic.DomainEvent;
 
 public class UserCreated extends DomainEvent {
 
-    private PersonalData personalData;
     private String password;
     private String nickname;
 
@@ -15,10 +14,6 @@ public class UserCreated extends DomainEvent {
         this.nickname = nickname;
     }
 
-
-    public PersonalData getPersonalData() {
-        return personalData;
-    }
 
     public String getPassword() {
         return password;

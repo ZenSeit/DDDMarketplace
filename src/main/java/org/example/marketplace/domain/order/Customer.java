@@ -10,10 +10,9 @@ public class Customer extends Entity<CustomerId> {
     private UserId userId;
     private Points points;
 
-    public Customer(CustomerId id, UserId userId, Points points) {
+    public Customer(CustomerId id, UserId userId) {
         super(id);
         this.userId = userId;
-        this.points = points;
     }
 
     public UserId UserId() {

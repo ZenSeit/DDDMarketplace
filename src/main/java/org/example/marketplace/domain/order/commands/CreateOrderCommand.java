@@ -5,19 +5,11 @@ import org.example.marketplace.generic.Command;
 public class CreateOrderCommand extends Command {
 
     private String orderId;
-    private String customerId;
-    private String sellerId;
-
     private String status;
 
-    public CreateOrderCommand(String orderId, String customerId, String sellerId, String status) {
+    public CreateOrderCommand(String orderId, String status) {
         this.orderId = orderId;
-        this.customerId = customerId;
-        this.sellerId = sellerId;
         this.status = status;
-    }
-
-    public CreateOrderCommand() {
     }
 
     public String getOrderId() {
@@ -26,22 +18,6 @@ public class CreateOrderCommand extends Command {
 
     public void setOrderId(String orderId) {
         this.orderId = orderId;
-    }
-
-    public String getCustomerId() {
-        return customerId;
-    }
-
-    public void setCustomerId(String customerId) {
-        this.customerId = customerId;
-    }
-
-    public String getSellerId() {
-        return sellerId;
-    }
-
-    public void setSellerId(String sellerId) {
-        this.sellerId = sellerId;
     }
 
     public String getStatus() {

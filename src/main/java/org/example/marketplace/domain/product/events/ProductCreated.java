@@ -1,5 +1,7 @@
 package org.example.marketplace.domain.product.events;
 
+import org.example.marketplace.domain.user.User;
+import org.example.marketplace.domain.values.UserId;
 import org.example.marketplace.generic.DomainEvent;
 
 public class ProductCreated extends DomainEvent {
@@ -8,9 +10,9 @@ public class ProductCreated extends DomainEvent {
     private String description;
     private int quantity;
     private double price;
-    private String ownerId;
+    private UserId ownerId;
 
-    public ProductCreated(String name, String description, int quantity, double price, String ownerId) {
+    public ProductCreated(String name, String description, int quantity, double price, UserId ownerId) {
         super("org.example.marketplace.productcreated");
         this.name = name;
         this.description = description;
@@ -39,7 +41,7 @@ public class ProductCreated extends DomainEvent {
         return price;
     }
 
-    public String getOwnerId() {
+    public UserId getOwnerId() {
         return ownerId;
     }
 }

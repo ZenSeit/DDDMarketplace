@@ -1,6 +1,7 @@
 package org.example.marketplace.domain.order;
 
 import org.example.marketplace.domain.order.events.OrderCreated;
+import org.example.marketplace.domain.product.Product;
 import org.example.marketplace.domain.values.CustomerId;
 import org.example.marketplace.domain.values.OrderId;
 import org.example.marketplace.domain.values.SellerId;
@@ -12,23 +13,25 @@ import java.util.List;
 
 public class Order extends AggregateRoot<OrderId> {
 
-    protected CustomerId customerId;
-    protected SellerId sellerId;
+    protected Customer customer;
+    protected Seller seller;
+
+    protected List<Product> products;
 
     protected Status status;
 
-    public Order(OrderId id, CustomerId customerId, SellerId sellerId,Status status) {
+    public Order(OrderId id,Status status) {
         super(id);
         subscribe(new OrderChange(this));
-        appendChange(new OrderCreated(customerId.value(),sellerId.value(),status.value()));
+        appendChange(new OrderCreated(status.value()));
     }
 
-    public Order(OrderId id) {
+    private Order(OrderId id) {
         super(id);
         subscribe(new OrderChange(this));
     }
 
-    public static Order myOrder(OrderId id, List<DomainEvent> events){
+    public static Order from(OrderId id, List<DomainEvent> events){
         Order order = new Order(id);
         events.forEach(event -> order.applyEvent(event));
         return order;

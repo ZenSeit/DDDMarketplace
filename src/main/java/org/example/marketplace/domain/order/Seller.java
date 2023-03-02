@@ -10,10 +10,9 @@ public class Seller extends Entity<SellerId> {
     private UserId userId;
     private Reputation reputation;
 
-    public Seller(SellerId id, UserId userId, Reputation reputation) {
+    public Seller(SellerId id, UserId userId) {
         super(id);
         this.userId = userId;
-        this.reputation = reputation;
     }
 
     public UserId UserId() {
