@@ -1,6 +1,8 @@
 package org.example.marketplace.domain.order;
 
 import org.example.marketplace.domain.order.events.OrderCreated;
+import org.example.marketplace.domain.order.events.OrderCustomerAssigned;
+import org.example.marketplace.domain.order.events.OrderSellerAssigned;
 import org.example.marketplace.domain.product.Product;
 import org.example.marketplace.domain.values.CustomerId;
 import org.example.marketplace.domain.values.OrderId;
@@ -35,6 +37,14 @@ public class Order extends AggregateRoot<OrderId> {
         Order order = new Order(id);
         events.forEach(event -> order.applyEvent(event));
         return order;
+    }
+
+    public void assignSellerToOrder(String sellerId,String userId){
+        appendChange(new OrderSellerAssigned(sellerId,userId));
+    }
+
+    public void assignCustomerToOrder(String customerId,String userId){
+        appendChange(new OrderCustomerAssigned(customerId,userId));
     }
 
     public void addProducts(){}
