@@ -16,8 +16,7 @@ public class UserChange extends EventChange {
         });
 
         apply((PersonalDataAdded event)-> {
-            PersonalDataId personalDataId = PersonalDataId.of(event.getPersonalDataId());
-            user.personalData = new PersonalData(personalDataId, new Name(event.getName()), new LastName(event.getLastname()), new Email(event.getEmail()), new Birthday(event.getBirthDay()));
+            user.personalData = new PersonalData(event.getPersonalDataId(), event.getName(), event.getLastname(), event.getEmail(), event.getBirthDay());
         });
 
         apply((PersonalDataEmailUpdated event) ->{

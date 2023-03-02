@@ -1,6 +1,8 @@
 package org.example.marketplace.domain.order.commands;
 
-public class AddProductCommand {
+import org.example.marketplace.generic.Command;
+
+public class AddProductCommand extends Command {
 
     private String orderId;
     private String productId;
