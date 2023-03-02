@@ -4,7 +4,7 @@ import org.example.marketplace.generic.Identity;
 
 public class OrderId extends Identity {
 
-    public OrderId(String uuid) {
+    private OrderId(String uuid) {
         super(uuid);
     }
 

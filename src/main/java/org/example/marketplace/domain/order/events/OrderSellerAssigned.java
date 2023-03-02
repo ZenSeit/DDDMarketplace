@@ -1,23 +1,25 @@
 package org.example.marketplace.domain.order.events;
 
+import org.example.marketplace.domain.values.SellerId;
+import org.example.marketplace.domain.values.UserId;
 import org.example.marketplace.generic.DomainEvent;
 
 public class OrderSellerAssigned extends DomainEvent {
 
-    private final String sellerId;
-    private final String userId;
+    private final SellerId sellerId;
+    private final UserId userId;
 
-    public OrderSellerAssigned(String sellerId, String userId) {
+    public OrderSellerAssigned(SellerId sellerId, UserId userId) {
         super("org.example.marketplace.assignedsellertoorder");
         this.sellerId = sellerId;
         this.userId = userId;
     }
 
-    public String getSellerId() {
+    public SellerId getSellerId() {
         return sellerId;
     }
 
-    public String getUserId() {
+    public UserId getUserId() {
         return userId;
     }
 }

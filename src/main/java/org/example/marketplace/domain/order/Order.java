@@ -2,12 +2,10 @@ package org.example.marketplace.domain.order;
 
 import org.example.marketplace.domain.order.events.OrderCreated;
 import org.example.marketplace.domain.order.events.OrderCustomerAssigned;
+import org.example.marketplace.domain.order.events.OrderProductAdded;
 import org.example.marketplace.domain.order.events.OrderSellerAssigned;
 import org.example.marketplace.domain.product.Product;
-import org.example.marketplace.domain.values.CustomerId;
-import org.example.marketplace.domain.values.OrderId;
-import org.example.marketplace.domain.values.SellerId;
-import org.example.marketplace.domain.values.Status;
+import org.example.marketplace.domain.values.*;
 import org.example.marketplace.generic.AggregateRoot;
 import org.example.marketplace.generic.DomainEvent;
 
@@ -18,14 +16,14 @@ public class Order extends AggregateRoot<OrderId> {
     protected Customer customer;
     protected Seller seller;
 
-    protected List<Product> products;
+    protected List<ProductId> products;
 
     protected Status status;
 
     public Order(OrderId id,Status status) {
         super(id);
         subscribe(new OrderChange(this));
-        appendChange(new OrderCreated(status.value()));
+        appendChange(new OrderCreated(status));
     }
 
     private Order(OrderId id) {
@@ -39,15 +37,17 @@ public class Order extends AggregateRoot<OrderId> {
         return order;
     }
 
-    public void assignSellerToOrder(String sellerId,String userId){
+    public void assignSellerToOrder(SellerId sellerId,UserId userId){
         appendChange(new OrderSellerAssigned(sellerId,userId));
     }
 
-    public void assignCustomerToOrder(String customerId,String userId){
+    public void assignCustomerToOrder(CustomerId customerId,UserId userId){
         appendChange(new OrderCustomerAssigned(customerId,userId));
     }
 
-    public void addProducts(){}
+    public void addProducts(ProductId productId){
+        appendChange(new OrderProductAdded(productId));
+    }
 
 
 }

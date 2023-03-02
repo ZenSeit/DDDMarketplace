@@ -24,7 +24,7 @@ public class Product extends AggregateRoot<ProductId> {
     public Product(ProductId id, Name name, Description description, Quantity quantity, Price price, UserId ownerId) {
         super(id);
         subscribe(new ProductChange(this));
-        appendChange(new ProductCreated(name.value(), description.value(), quantity.value(),price.value(), ownerId));
+        appendChange(new ProductCreated(name, description, quantity,price, ownerId));
     }
 
     private Product(ProductId id) {
@@ -39,7 +39,7 @@ public class Product extends AggregateRoot<ProductId> {
     }
 
     public void addReview(ReviewId id, Title title,Description description, UserId userId){
-        appendChange(new ReviewAdded(id, title.value(), description.value(), userId));
+        appendChange(new ReviewAdded(id, title, description, userId));
     }
 
     public void deleteReview(ReviewId reviewId){

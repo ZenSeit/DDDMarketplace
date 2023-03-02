@@ -20,7 +20,7 @@ public class User extends AggregateRoot<UserId> {
     public User(UserId id, Password password, Nickname nickname) {
         super(id);
         subscribe(new UserChange(this));
-        appendChange(new UserCreated(password.value(), nickname.value()));
+        appendChange(new UserCreated(password, nickname));
     }
 
     private User(UserId id){
@@ -34,9 +34,9 @@ public class User extends AggregateRoot<UserId> {
         return user;
     }
 
-    public void addPersonalData(PersonalDataId id,String name, String lastname, String email, Date birthDay){
+    public void addPersonalData(PersonalDataId id,Name name, LastName lastname, Email email, Birthday birthDay){
         Objects.requireNonNull(id);
-        appendChange(new PersonalDataAdded(id.value(),name,lastname,email,birthDay));
+        appendChange(new PersonalDataAdded(id,name,lastname,email,birthDay));
     }
 
     public void updateEmail(Email email){

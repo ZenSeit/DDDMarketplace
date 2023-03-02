@@ -5,7 +5,7 @@ import org.example.marketplace.generic.DomainEvent;
 
 public class ReviewDeleted extends DomainEvent {
 
-    private ReviewId reviewId;
+    private final ReviewId reviewId;
 
     public ReviewDeleted(ReviewId reviewId) {
         super("org.example.marketplace.reviewdeleted");

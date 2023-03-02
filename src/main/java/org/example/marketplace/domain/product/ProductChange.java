@@ -12,16 +12,16 @@ public class ProductChange extends EventChange {
 
     public ProductChange(Product product){
         apply((ProductCreated event) ->{
-            product.name=new Name(event.getName());
-            product.description=new Description(event.getDescription());
-            product.quantity=new Quantity(event.getQuantity());
-            product.price=new Price(event.getPrice());
+            product.name=event.getName();
+            product.description=event.getDescription();
+            product.quantity=event.getQuantity();
+            product.price=event.getPrice();
             product.owner=event.getOwnerId();
             product.reviews=new ArrayList<>();
         });
 
         apply((ReviewAdded event)->{
-            Review review = new Review(event.getReviewId(),new Title(event.getTitle()),new Description(event.getDescription()),event.getUserId());
+            Review review = new Review(event.getReviewId(),event.getTitle(),event.getDescription(),event.getUserId());
             product.reviews.add(review);
         });
 

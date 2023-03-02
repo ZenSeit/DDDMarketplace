@@ -4,7 +4,10 @@ import org.example.marketplace.business.commons.EventsRepository;
 import org.example.marketplace.business.commons.UseCaseForCommand;
 import org.example.marketplace.domain.order.Order;
 import org.example.marketplace.domain.order.commands.AssignCustomerOrderCommand;
+import org.example.marketplace.domain.values.CustomerId;
 import org.example.marketplace.domain.values.OrderId;
+import org.example.marketplace.domain.values.SellerId;
+import org.example.marketplace.domain.values.UserId;
 import org.example.marketplace.generic.DomainEvent;
 
 import java.util.List;
@@ -21,7 +24,7 @@ public class AssignCustomerOrderUseCase implements UseCaseForCommand<AssignCusto
     public List<DomainEvent> apply(AssignCustomerOrderCommand command) {
         List<DomainEvent> orderEvents = eventsRepository.findByAggregatedRootId(command.getOrderId());
         Order order = Order.from(OrderId.of(command.getOrderId()),orderEvents);
-        order.assignSellerToOrder(command.getCustomerId(), command.getUserId());
+        order.assignCustomerToOrder(CustomerId.of(command.getCustomerId()), UserId.of(command.getUserId()));
         return order.getUncommittedChanges().stream().map(eventsRepository::saveEvent).toList();
     }
 }

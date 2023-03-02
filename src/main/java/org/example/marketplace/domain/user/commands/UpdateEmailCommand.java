@@ -2,12 +2,12 @@ package org.example.marketplace.domain.user.commands;
 
 import org.example.marketplace.generic.Command;
 
-public class UpdateEmailData extends Command {
+public class UpdateEmailCommand extends Command {
 
     private String userId;
     private String email;
 
-    public UpdateEmailData(String userId, String email) {
+    public UpdateEmailCommand(String userId, String email) {
         this.userId = userId;
         this.email = email;
     }

@@ -11,8 +11,8 @@ public class UserChange extends EventChange {
     public UserChange(User user){
 
         apply((UserCreated event) ->{
-            user.nickname=new Nickname(event.getNickname());
-            user.password=new Password(event.getPassword());
+            user.nickname=event.getNickname();
+            user.password=event.getPassword();
         });
 
         apply((PersonalDataAdded event)-> {

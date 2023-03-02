@@ -2,6 +2,7 @@ package org.example.marketplace.domain.order;
 
 import org.example.marketplace.domain.order.events.OrderCreated;
 import org.example.marketplace.domain.order.events.OrderCustomerAssigned;
+import org.example.marketplace.domain.order.events.OrderProductAdded;
 import org.example.marketplace.domain.order.events.OrderSellerAssigned;
 import org.example.marketplace.domain.values.CustomerId;
 import org.example.marketplace.domain.values.SellerId;
@@ -18,11 +19,15 @@ public class OrderChange extends EventChange {
         });
 
         apply((OrderCustomerAssigned event) ->{
-            order.customer = new Customer(CustomerId.of(event.getCustomerId()),UserId.of(event.getUserId()));
+            order.customer = new Customer(event.getCustomerId(),event.getUserId());
         });
 
         apply((OrderSellerAssigned event) ->{
-            order.seller = new Seller(SellerId.of(event.getSellerId()),UserId.of(event.getUserId()));
+            order.seller = new Seller(event.getSellerId(),event.getUserId());
+        });
+
+        apply((OrderProductAdded event)->{
+            order.products.add(event.getProductId());
         });
 
     }
