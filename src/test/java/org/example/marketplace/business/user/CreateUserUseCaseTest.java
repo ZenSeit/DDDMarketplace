@@ -15,10 +15,7 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import java.util.Date;
 import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 @ExtendWith(MockitoExtension.class)
 class CreateUserUseCaseTest {
@@ -33,7 +30,7 @@ class CreateUserUseCaseTest {
     }
 
     @Test
-    void sucsessfulScenario(){
+    void successfulScenario(){
 
         CreateUserCommand createUserCommand = new CreateUserCommand("testId", "123gerger", "Zensei");
         UserCreated userCreated = new UserCreated(new Password("123gerger"),new Nickname("Zensei"));
