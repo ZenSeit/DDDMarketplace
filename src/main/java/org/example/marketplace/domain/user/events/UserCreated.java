@@ -1,6 +1,5 @@
 package org.example.marketplace.domain.user.events;
 
-import org.example.marketplace.domain.user.PersonalData;
 import org.example.marketplace.domain.values.Nickname;
 import org.example.marketplace.domain.values.Password;
 import org.example.marketplace.generic.DomainEvent;

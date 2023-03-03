@@ -25,7 +25,7 @@ public class CreatePersonalDataCommand extends Command {
         this.userId = userId;
     }
 
-    public CreatePersonalDataCommand() {
+    private CreatePersonalDataCommand() {
     }
 
     public String getPersonalDataId() {

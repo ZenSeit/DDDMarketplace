@@ -20,7 +20,7 @@ public class User extends AggregateRoot<UserId> {
     public User(UserId id, Password password, Nickname nickname) {
         super(id);
         subscribe(new UserChange(this));
-        appendChange(new UserCreated(password, nickname));
+        appendChange(new UserCreated(password, nickname)).apply();
     }
 
     private User(UserId id){
