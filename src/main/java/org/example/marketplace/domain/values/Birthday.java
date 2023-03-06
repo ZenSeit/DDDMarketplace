@@ -8,8 +8,8 @@ public class Birthday implements ValueObject<Date> {
 
     private Date birthday;
 
-    public Birthday(Date birthday) {
-        this.birthday = birthday;
+    public Birthday(String birthday) {
+        this.birthday = new Date(birthday);
     }
 
     @Override
