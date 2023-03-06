@@ -26,7 +26,7 @@ public class ProductChange extends EventChange {
         });
 
         apply((ReviewDeleted event) ->{
-            product.reviews = product.reviews.stream().filter(review -> !review.UserId().value().equalsIgnoreCase(event.getReviewId().value())).toList();
+            product.reviews = product.reviews.stream().filter(review -> !review.identity().value().equalsIgnoreCase(event.getReviewId().value())).toList();
         });
     }
 

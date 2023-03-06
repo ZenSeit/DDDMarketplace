@@ -10,13 +10,13 @@ public class CreatePersonalDataCommand extends Command {
     private String name;
     private String lastname;
     private String email;
-    private Date birthDay;
+    private String birthDay;
     private String userId;
 
     //private String Address; //Question: What type should I use here?
 
 
-    public CreatePersonalDataCommand(String personalDataId, String name, String lastname, String email, Date birthDay,String userId) {
+    public CreatePersonalDataCommand(String personalDataId, String name, String lastname, String email, String birthDay,String userId) {
         this.personalDataId = personalDataId;
         this.name = name;
         this.lastname = lastname;
@@ -60,11 +60,11 @@ public class CreatePersonalDataCommand extends Command {
         this.email = email;
     }
 
-    public Date getBirthDay() {
+    public String getBirthDay() {
         return birthDay;
     }
 
-    public void setBirthDay(Date birthDay) {
+    public void setBirthDay(String birthDay) {
         this.birthDay = birthDay;
     }
 

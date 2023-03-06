@@ -39,11 +39,11 @@ public class Product extends AggregateRoot<ProductId> {
     }
 
     public void addReview(ReviewId id, Title title,Description description, UserId userId){
-        appendChange(new ReviewAdded(id, title, description, userId));
+        appendChange(new ReviewAdded(id, title, description, userId)).apply();
     }
 
     public void deleteReview(ReviewId reviewId){
-        appendChange(new ReviewDeleted(reviewId));
+        appendChange(new ReviewDeleted(reviewId)).apply();
     }
 
 

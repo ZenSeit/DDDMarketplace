@@ -38,15 +38,15 @@ public class Order extends AggregateRoot<OrderId> {
     }
 
     public void assignSellerToOrder(SellerId sellerId,UserId userId){
-        appendChange(new OrderSellerAssigned(sellerId,userId));
+        appendChange(new OrderSellerAssigned(sellerId,userId)).apply();
     }
 
     public void assignCustomerToOrder(CustomerId customerId,UserId userId){
-        appendChange(new OrderCustomerAssigned(customerId,userId));
+        appendChange(new OrderCustomerAssigned(customerId,userId)).apply();
     }
 
     public void addProducts(ProductId productId){
-        appendChange(new OrderProductAdded(productId));
+        appendChange(new OrderProductAdded(productId)).apply();
     }
 
 

@@ -36,7 +36,7 @@ public class User extends AggregateRoot<UserId> {
 
     public void addPersonalData(PersonalDataId id,Name name, LastName lastname, Email email, Birthday birthDay){
         Objects.requireNonNull(id);
-        appendChange(new PersonalDataAdded(id,name,lastname,email,birthDay));
+        appendChange(new PersonalDataAdded(id,name,lastname,email,birthDay)).apply();
     }
 
     public void updateEmail(Email email){

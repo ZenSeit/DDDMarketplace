@@ -15,6 +15,7 @@ public class OrderChange extends EventChange {
 
     public OrderChange(Order order){
         apply((OrderCreated event) ->{
+            order.status = event.getStatus();
             order.products = new ArrayList<>();
         });
 

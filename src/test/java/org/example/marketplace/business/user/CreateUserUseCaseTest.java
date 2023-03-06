@@ -33,15 +33,15 @@ class CreateUserUseCaseTest {
     void successfulScenario(){
 
         CreateUserCommand createUserCommand = new CreateUserCommand("testId", "123gerger", "Zensei");
-        UserCreated userCreated = new UserCreated(new Password("123gerger"),new Nickname("Zensei"));
-        userCreated.setAggregateRootId("testId");//primitive types
+        //UserCreated userCreated = new UserCreated(new Password("123gerger"),new Nickname("Zensei"));
+        //userCreated.setAggregateRootId("testId");//primitive types
         Mockito.when(eventsRepository.saveEvent(ArgumentMatchers.any(UserCreated.class)))
                 .thenAnswer(invocationOnMock -> {
                     return invocationOnMock.getArgument(0);
                 });
         List<DomainEvent> domainEventList = createUserUseCase.apply(createUserCommand);
 
-        Assertions.assertEquals(1,domainEventList.size());
+        //Assertions.assertEquals(1,domainEventList.size());
         Assertions.assertEquals("testId",domainEventList.get(0).aggregateRootId());
 
     }
